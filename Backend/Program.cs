@@ -8,7 +8,20 @@ using HomeAPI.Schema.Operations.Workouts;
 using HomeAPI.Schema.Types;
 using Microsoft.EntityFrameworkCore;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200/")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 
 builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(
     options => options.UseSqlite("Data Source=home.db"));
@@ -41,6 +54,8 @@ builder.Services
     .AddDataLoader<WorkoutByIdDataLoader>();
 
 var app = builder.Build();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.MapGraphQL();
 
