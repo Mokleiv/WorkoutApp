@@ -1,0 +1,10 @@
+query GetWorkoutPrograms {
+  workoutPrograms {
+    ...workoutProgram
+  }
+}
+
+fragment workoutProgram on WorkoutProgram {
+  id
+  name
+}
