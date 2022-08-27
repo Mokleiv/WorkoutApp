@@ -18,7 +18,7 @@ export class ApiTestComponent implements OnInit {
   subs = new SubSink();
 
   constructor(private getWorkoutPrograms: GetWorkoutProgramsGQL) {}
-
+  // ! This is a comment
   async ngOnInit() {
     this.workoutPrograms = await firstValueFrom(
       this.getWorkoutPrograms.fetch().pipe(map((x) => x.data.workoutPrograms))
