@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { firstValueFrom, map } from 'rxjs';
-import {
-  GetWorkoutProgramsGQL,
-  WorkoutProgramFragment,
-} from 'src/generated/graphql';
+import { GetWorkoutProgramsGQL, WorkoutProgramFragment } from 'src/generated/graphql';
 import { SubSink } from 'subsink';
 
 @Component({
