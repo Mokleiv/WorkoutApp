@@ -7,4 +7,5 @@ query GetWorkoutPrograms {
 fragment workoutProgram on WorkoutProgram {
   id
   name
+  isActive
 }
